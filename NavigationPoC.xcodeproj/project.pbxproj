@@ -33,6 +33,10 @@
 		F191BB8C2A963D2D00462471 /* DeeplinkResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191BB8B2A963D2D00462471 /* DeeplinkResolver.swift */; };
 		F191BB912A963F5000462471 /* AppNavigationState+DeeplinkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191BB902A963F5000462471 /* AppNavigationState+DeeplinkHandler.swift */; };
 		F191BB9E2A964EE300462471 /* MNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191BB9D2A964EE300462471 /* MNavigation.swift */; };
+		F191BB942A96407700462471 /* FirstTabRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191BB932A96407700462471 /* FirstTabRoute.swift */; };
+		F191BB962A96408000462471 /* SecondTabRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191BB952A96408000462471 /* SecondTabRoute.swift */; };
+		F191BB982A9640A200462471 /* FullScreenRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191BB972A9640A200462471 /* FullScreenRoute.swift */; };
+		F191BB9A2A9640AB00462471 /* SheetRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191BB992A9640AB00462471 /* SheetRoute.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +86,10 @@
 		F191BB8B2A963D2D00462471 /* DeeplinkResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkResolver.swift; sourceTree = "<group>"; };
 		F191BB902A963F5000462471 /* AppNavigationState+DeeplinkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppNavigationState+DeeplinkHandler.swift"; sourceTree = "<group>"; };
 		F191BB9D2A964EE300462471 /* MNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNavigation.swift; sourceTree = "<group>"; };
+		F191BB932A96407700462471 /* FirstTabRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTabRoute.swift; sourceTree = "<group>"; };
+		F191BB952A96408000462471 /* SecondTabRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondTabRoute.swift; sourceTree = "<group>"; };
+		F191BB972A9640A200462471 /* FullScreenRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenRoute.swift; sourceTree = "<group>"; };
+		F191BB992A9640AB00462471 /* SheetRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetRoute.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +203,7 @@
 		F191BB7F2A9626C300462471 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				F191BB922A96406D00462471 /* Routes */,
 				F191BB7D2A9626B800462471 /* AppNavigationState.swift */,
 				F191BB802A9626FF00462471 /* Router.swift */,
 				F191BB822A96271500462471 /* Route.swift */,
@@ -215,6 +224,17 @@
 				F191BB882A96308300462471 /* SecondTabDeeplinkResolver.swift */,
 			);
 			path = Deeplinks;
+			sourceTree = "<group>";
+		};
+		F191BB922A96406D00462471 /* Routes */ = {
+			isa = PBXGroup;
+			children = (
+				F191BB932A96407700462471 /* FirstTabRoute.swift */,
+				F191BB952A96408000462471 /* SecondTabRoute.swift */,
+				F191BB972A9640A200462471 /* FullScreenRoute.swift */,
+				F191BB992A9640AB00462471 /* SheetRoute.swift */,
+			);
+			path = Routes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -355,6 +375,7 @@
 			files = (
 				F1456BCF2A9784E500480D11 /* DeeplinkError.swift in Sources */,
 				F16AD9352A95067900694AA6 /* FullScreenSecondTabHome.swift in Sources */,
+				F191BB962A96408000462471 /* SecondTabRoute.swift in Sources */,
 				F16AD9252A94B0BB00694AA6 /* SecondTabHomeView.swift in Sources */,
 				F16AD92D2A94B1A100694AA6 /* FirstLevelView.swift in Sources */,
 				F191BB7E2A9626B800462471 /* AppNavigationState.swift in Sources */,
@@ -362,12 +383,15 @@
 				F191BB832A96271500462471 /* Route.swift in Sources */,
 				F191BB872A962CBD00462471 /* FirstTabDeeplinkResolver.swift in Sources */,
 				F191BB892A96308300462471 /* SecondTabDeeplinkResolver.swift in Sources */,
+				F191BB9A2A9640AB00462471 /* SheetRoute.swift in Sources */,
 				F191BB812A9626FF00462471 /* Router.swift in Sources */,
 				F16AD8EE2A94A71600694AA6 /* FirstTabHomeView.swift in Sources */,
 				F16AD92F2A94B1A900694AA6 /* ThirdLevelView.swift in Sources */,
+				F191BB982A9640A200462471 /* FullScreenRoute.swift in Sources */,
 				F191BB852A962ACF00462471 /* DeeplinkSections.swift in Sources */,
 				F16AD91F2A94A8B200694AA6 /* ItemDetailsView.swift in Sources */,
 				F191BB7C2A95EC7B00462471 /* Snackbar.swift in Sources */,
+				F191BB942A96407700462471 /* FirstTabRoute.swift in Sources */,
 				F16AD9212A94A8C100694AA6 /* InfoView.swift in Sources */,
 				F191BB9E2A964EE300462471 /* MNavigation.swift in Sources */,
 				F16AD8EC2A94A71600694AA6 /* NavigationPoCApp.swift in Sources */,
