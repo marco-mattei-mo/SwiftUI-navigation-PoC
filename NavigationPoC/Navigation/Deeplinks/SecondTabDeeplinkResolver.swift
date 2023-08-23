@@ -1,13 +1,13 @@
 import Foundation
 
-struct SecondTabDeeplinkResolver: DeeplinkResolver {    
+struct SecondTabDeeplinkResolver {    
     private enum DeeplinkPath: String {
         case firstLevel
         case secondLevel
         case thirdLevel
     }
     
-    func resolveNavStackForURL(_ components: URLComponents) throws -> [Route] {
+    func resolveNavStackForURL(_ components: URLComponents) throws -> [SecondTabRoute] {
         guard components.host == DeeplinkAppSection.secondTab.rawValue || components.host == DeeplinkAppSection.fullScreenCover.rawValue else {
             throw DeeplinkError.unrecognizedHost
         }

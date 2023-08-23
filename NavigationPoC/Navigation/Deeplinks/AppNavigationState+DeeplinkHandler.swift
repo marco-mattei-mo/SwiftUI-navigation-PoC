@@ -27,7 +27,7 @@ extension AppNavigationState {
             case .fullScreenCover:
                 presentFullScreenCover(screen: .secondTabFullScreen)
                 let navStack = try SecondTabDeeplinkResolver().resolveNavStackForURL(components)
-                fullScreenRouter.replace(with: navStack)
+                //TODO: How to push to correct view in full screen cover ? fullScreenRouter.replace(with: navStack)
             }
         } catch {
             print("deeplink failure")

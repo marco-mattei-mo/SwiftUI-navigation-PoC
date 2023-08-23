@@ -1,6 +1,6 @@
 import Foundation
 
-struct FirstTabDeeplinkResolver: DeeplinkResolver {    
+struct FirstTabDeeplinkResolver {
     private enum DeeplinkPath: String {
         case item
         case info
@@ -10,7 +10,7 @@ struct FirstTabDeeplinkResolver: DeeplinkResolver {
         case details
     }
     
-    func resolveNavStackForURL(_ components: URLComponents) throws -> [Route] {
+    func resolveNavStackForURL(_ components: URLComponents) throws -> [FirstTabRoute] {
         guard components.host == DeeplinkAppSection.firstTab.rawValue else {
             throw DeeplinkError.unrecognizedHost
         }
@@ -29,7 +29,7 @@ struct FirstTabDeeplinkResolver: DeeplinkResolver {
         }
     }
     
-    private func handleItem(_ components: URLComponents, path: inout [String.SubSequence]) throws -> [Route] {
+    private func handleItem(_ components: URLComponents, path: inout [String.SubSequence]) throws -> [FirstTabRoute] {
         let deeplinkPath = DeeplinkItemPath(rawValue: String(path.removeFirst()))
         
         switch deeplinkPath {
@@ -42,7 +42,7 @@ struct FirstTabDeeplinkResolver: DeeplinkResolver {
         }
     }
     
-    private func handleInfo(_ components: URLComponents, path: inout [String.SubSequence]) throws -> [Route] {
+    private func handleInfo(_ components: URLComponents, path: inout [String.SubSequence]) throws -> [FirstTabRoute] {
         return [.info]
     }
 }

@@ -1,13 +1,13 @@
 import Combine
 
-class Router: ObservableObject {
-    @Published var stack = [Route]()
+class Router<RouteType: Hashable>: ObservableObject {
+    @Published var stack = [RouteType]()
 
-    func push(to screen: Route) {
+    func push(to screen: RouteType) {
         stack.append(screen)
     }
     
-    func replace(with stack: [Route]) {
+    func replace(with stack: [RouteType]) {
         self.stack = stack
     }
     
@@ -15,7 +15,7 @@ class Router: ObservableObject {
         _ = stack.popLast()
     }
     
-    func pop(to: Route) {
+    func pop(to: RouteType) {
         guard let indexOfScreen = stack.lastIndex(of: to) else { return }
         
         stack.removeLast(stack.count - 1 - indexOfScreen)

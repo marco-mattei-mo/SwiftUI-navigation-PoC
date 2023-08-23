@@ -64,13 +64,11 @@ struct NavigationPoCApp: App {
                 .fullScreenCover(item: $appNavigationState.presentedFullScreen, content: { route in
                     route
                         .environmentObject(appNavigationState)
-                        .environmentObject(appNavigationState.fullScreenRouter)
                         .mSnackbar(isShowing: $appNavigationState.isSnackbarPresented, message: appNavigationState.snackbarMessage, messageType: .success)
                 })
                 .sheet(item: $appNavigationState.presentedSheet, content: { route in
                     route
                         .environmentObject(appNavigationState)
-                        .environmentObject(appNavigationState.sheetRouter)
                         .mSnackbar(isShowing: $appNavigationState.isSnackbarPresented, message: appNavigationState.snackbarMessage, messageType: .success)
                 })
                 .toolbar {

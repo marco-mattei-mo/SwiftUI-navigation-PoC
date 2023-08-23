@@ -1,10 +1,10 @@
 import SwiftUI
 
 struct SecondLevelView: View {
-    @EnvironmentObject var router: Router
+    @EnvironmentObject var router: Router<SecondTabRoute>
 
     var body: some View {
-        MNavigationLink(value: Route.secondTabThirdLevel) {
+        MNavigationLink(value: SecondTabRoute.secondTabThirdLevel) {
             Text("Go to third level")
         }
         .navigationTitle("Second level")
@@ -16,7 +16,7 @@ struct SecondLevelView_Previews: PreviewProvider {
     static var previews: some View {
         MNavigationStack {
             SecondLevelView()
-                .environmentObject(Router())
+                .environmentObject(Router<SecondTabRoute>())
         }
     }
 }

@@ -2,15 +2,15 @@ import SwiftUI
 
 class ThirdLevelViewModel: ObservableObject {
     let appNavState: AppNavigationState
-    var viewRouter: Router? // If required, can be injected with "setViewRouter()"
+    var viewRouter: Router<SecondTabRoute>? // If required, can be injected with "setViewRouter()"
     
     init(appNavState: AppNavigationState = DIContainer.appNavState,
-         viewRouter: Router? = nil) {
+         viewRouter: Router<SecondTabRoute>? = nil) {
         self.appNavState = appNavState
         self.viewRouter = viewRouter
     }
     
-    func setViewRouter(viewRouter: Router) {
+    func setViewRouter(viewRouter: Router<SecondTabRoute>?) {
         self.viewRouter = viewRouter
     }
     
@@ -24,7 +24,7 @@ class ThirdLevelViewModel: ObservableObject {
 }
 
 struct ThirdLevelView: View {
-    @EnvironmentObject var router: Router
+    @EnvironmentObject var router: Router<SecondTabRoute>
     @EnvironmentObject var appNavState: AppNavigationState
     @StateObject var viewModel = ThirdLevelViewModel()
     
@@ -61,7 +61,7 @@ struct ThirdLevelView: View {
 struct ThirdLevelView_Previews: PreviewProvider {
     static var previews: some View {
         ThirdLevelView()
-            .environmentObject(Router())
+            .environmentObject(Router<SecondTabRoute>())
             .environmentObject(AppNavigationState())
     }
 }

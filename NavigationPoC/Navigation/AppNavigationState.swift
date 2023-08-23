@@ -20,7 +20,7 @@ class AppNavigationState: ObservableObject {
                         popSelectedTabToRoot()
                     }
                 case .secondTab:
-                    if firstTabRouter.stack.isEmpty {
+                    if secondTabRouter.stack.isEmpty {
                         scrollToTopSecondTab = true
                     } else {
                         popSelectedTabToRoot()
@@ -31,8 +31,8 @@ class AppNavigationState: ObservableObject {
     }
     
     // Tab routers
-    let firstTabRouter = Router()
-    let secondTabRouter = Router()
+    let firstTabRouter = Router<FirstTabRoute>()
+    let secondTabRouter = Router<SecondTabRoute>()
     
     // Scroll listeners
     @Published var scrollToTopFirstTab = false
@@ -44,11 +44,8 @@ class AppNavigationState: ObservableObject {
     }
     
     // Full screen, sheets and snackbar properties
-    @Published var presentedFullScreen: Route? = nil
-    @Published var fullScreenRouter = Router()
-    
-    @Published var presentedSheet: Route? = nil
-    @Published var sheetRouter = Router()
+    @Published var presentedFullScreen: FullScreenRoute? = nil
+    @Published var presentedSheet: SheetRoute? = nil
 
     @Published var isSnackbarPresented: Bool = false
     @Published var snackbarMessage: String = ""
@@ -76,22 +73,20 @@ class AppNavigationState: ObservableObject {
         }
     }
     
-    func presentFullScreenCover(screen: Route) {
+    func presentFullScreenCover(screen: FullScreenRoute) {
         presentedFullScreen = screen
     }
     
     func dismissFullScreenCover() {
         presentedFullScreen = nil
-        fullScreenRouter.popToRoot()
     }
     
-    func presentSheet(screen: Route) {
+    func presentSheet(screen: SheetRoute) {
         presentedSheet = screen
     }
     
     func dismissSheet() {
         presentedSheet = nil
-        sheetRouter.popToRoot()
     }
     
     func dismissCoverAndSheet() {

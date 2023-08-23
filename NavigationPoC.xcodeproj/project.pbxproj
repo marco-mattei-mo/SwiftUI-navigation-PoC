@@ -26,17 +26,16 @@
 		F191BB7C2A95EC7B00462471 /* Snackbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191BB7B2A95EC7B00462471 /* Snackbar.swift */; };
 		F191BB7E2A9626B800462471 /* AppNavigationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191BB7D2A9626B800462471 /* AppNavigationState.swift */; };
 		F191BB812A9626FF00462471 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191BB802A9626FF00462471 /* Router.swift */; };
-		F191BB832A96271500462471 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191BB822A96271500462471 /* Route.swift */; };
 		F191BB852A962ACF00462471 /* DeeplinkSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191BB842A962ACF00462471 /* DeeplinkSections.swift */; };
 		F191BB872A962CBD00462471 /* FirstTabDeeplinkResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191BB862A962CBD00462471 /* FirstTabDeeplinkResolver.swift */; };
 		F191BB892A96308300462471 /* SecondTabDeeplinkResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191BB882A96308300462471 /* SecondTabDeeplinkResolver.swift */; };
-		F191BB8C2A963D2D00462471 /* DeeplinkResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191BB8B2A963D2D00462471 /* DeeplinkResolver.swift */; };
 		F191BB912A963F5000462471 /* AppNavigationState+DeeplinkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191BB902A963F5000462471 /* AppNavigationState+DeeplinkHandler.swift */; };
 		F191BB9E2A964EE300462471 /* MNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191BB9D2A964EE300462471 /* MNavigation.swift */; };
 		F191BB942A96407700462471 /* FirstTabRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191BB932A96407700462471 /* FirstTabRoute.swift */; };
 		F191BB962A96408000462471 /* SecondTabRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191BB952A96408000462471 /* SecondTabRoute.swift */; };
 		F191BB982A9640A200462471 /* FullScreenRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191BB972A9640A200462471 /* FullScreenRoute.swift */; };
 		F191BB9A2A9640AB00462471 /* SheetRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191BB992A9640AB00462471 /* SheetRoute.swift */; };
+		F191BB9C2A9646EB00462471 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191BB9B2A9646EB00462471 /* Route.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,18 +77,17 @@
 		F191BB7B2A95EC7B00462471 /* Snackbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snackbar.swift; sourceTree = "<group>"; };
 		F191BB7D2A9626B800462471 /* AppNavigationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigationState.swift; sourceTree = "<group>"; };
 		F191BB802A9626FF00462471 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
-		F191BB822A96271500462471 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		F191BB842A962ACF00462471 /* DeeplinkSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkSections.swift; sourceTree = "<group>"; };
 		F191BB862A962CBD00462471 /* FirstTabDeeplinkResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTabDeeplinkResolver.swift; sourceTree = "<group>"; };
 		F191BB882A96308300462471 /* SecondTabDeeplinkResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondTabDeeplinkResolver.swift; sourceTree = "<group>"; };
 		F191BB8A2A9632F900462471 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		F191BB8B2A963D2D00462471 /* DeeplinkResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkResolver.swift; sourceTree = "<group>"; };
 		F191BB902A963F5000462471 /* AppNavigationState+DeeplinkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppNavigationState+DeeplinkHandler.swift"; sourceTree = "<group>"; };
 		F191BB9D2A964EE300462471 /* MNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNavigation.swift; sourceTree = "<group>"; };
 		F191BB932A96407700462471 /* FirstTabRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTabRoute.swift; sourceTree = "<group>"; };
 		F191BB952A96408000462471 /* SecondTabRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondTabRoute.swift; sourceTree = "<group>"; };
 		F191BB972A9640A200462471 /* FullScreenRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenRoute.swift; sourceTree = "<group>"; };
 		F191BB992A9640AB00462471 /* SheetRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetRoute.swift; sourceTree = "<group>"; };
+		F191BB9B2A9646EB00462471 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,7 +204,6 @@
 				F191BB922A96406D00462471 /* Routes */,
 				F191BB7D2A9626B800462471 /* AppNavigationState.swift */,
 				F191BB802A9626FF00462471 /* Router.swift */,
-				F191BB822A96271500462471 /* Route.swift */,
 				F191BB8F2A963ED600462471 /* Deeplinks */,
 				F191BB9D2A964EE300462471 /* MNavigation.swift */,
 			);
@@ -219,7 +216,6 @@
 				F191BB902A963F5000462471 /* AppNavigationState+DeeplinkHandler.swift */,
 				F191BB842A962ACF00462471 /* DeeplinkSections.swift */,
 				F1456BCE2A9784E500480D11 /* DeeplinkError.swift */,
-				F191BB8B2A963D2D00462471 /* DeeplinkResolver.swift */,
 				F191BB862A962CBD00462471 /* FirstTabDeeplinkResolver.swift */,
 				F191BB882A96308300462471 /* SecondTabDeeplinkResolver.swift */,
 			);
@@ -233,6 +229,7 @@
 				F191BB952A96408000462471 /* SecondTabRoute.swift */,
 				F191BB972A9640A200462471 /* FullScreenRoute.swift */,
 				F191BB992A9640AB00462471 /* SheetRoute.swift */,
+				F191BB9B2A9646EB00462471 /* Route.swift */,
 			);
 			path = Routes;
 			sourceTree = "<group>";
@@ -379,8 +376,6 @@
 				F16AD9252A94B0BB00694AA6 /* SecondTabHomeView.swift in Sources */,
 				F16AD92D2A94B1A100694AA6 /* FirstLevelView.swift in Sources */,
 				F191BB7E2A9626B800462471 /* AppNavigationState.swift in Sources */,
-				F191BB8C2A963D2D00462471 /* DeeplinkResolver.swift in Sources */,
-				F191BB832A96271500462471 /* Route.swift in Sources */,
 				F191BB872A962CBD00462471 /* FirstTabDeeplinkResolver.swift in Sources */,
 				F191BB892A96308300462471 /* SecondTabDeeplinkResolver.swift in Sources */,
 				F191BB9A2A9640AB00462471 /* SheetRoute.swift in Sources */,
@@ -388,6 +383,7 @@
 				F16AD8EE2A94A71600694AA6 /* FirstTabHomeView.swift in Sources */,
 				F16AD92F2A94B1A900694AA6 /* ThirdLevelView.swift in Sources */,
 				F191BB982A9640A200462471 /* FullScreenRoute.swift in Sources */,
+				F191BB9C2A9646EB00462471 /* Route.swift in Sources */,
 				F191BB852A962ACF00462471 /* DeeplinkSections.swift in Sources */,
 				F16AD91F2A94A8B200694AA6 /* ItemDetailsView.swift in Sources */,
 				F191BB7C2A95EC7B00462471 /* Snackbar.swift in Sources */,

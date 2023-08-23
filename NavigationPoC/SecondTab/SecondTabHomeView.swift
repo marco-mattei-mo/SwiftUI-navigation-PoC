@@ -9,12 +9,12 @@ import SwiftUI
 
 struct SecondTabHomeView: View {
     @EnvironmentObject var appNavState: AppNavigationState
-    @EnvironmentObject var router: Router
+    @EnvironmentObject var router: Router<SecondTabRoute>
     
     var body: some View {
         MNavigationStack(path: $router.stack) {
             VStack {
-                MNavigationLink(value: Route.secondTabFirstLevel) {
+                MNavigationLink(value: SecondTabRoute.secondTabFirstLevel) {
                     Text("Go to first level")
                 }
                 
@@ -39,7 +39,7 @@ struct SecondTabHomeView: View {
             }
             .navigationTitle("Second tab home")
             .navigationBarTitleDisplayMode(.inline)
-            .mNavigationDestination(for: Route.self) { $0 }
+            .mNavigationDestination(for: SecondTabRoute.self) { $0 }
         }
         
     }
@@ -49,6 +49,6 @@ struct SecondTabHomeView_Previews: PreviewProvider {
     static var previews: some View {
         SecondTabHomeView()
             .environmentObject(AppNavigationState())
-            .environmentObject(Router())
+            .environmentObject(Router<SecondTabRoute>())
     }
 }
