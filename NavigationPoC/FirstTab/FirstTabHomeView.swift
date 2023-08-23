@@ -5,7 +5,6 @@
 //  Created by Mattei, Marco-MIGROSONLINE on 22.08.23.
 //
 
-import NavigationBackport
 import SwiftUI
 
 struct FirstTabHomeView: View {
@@ -13,13 +12,13 @@ struct FirstTabHomeView: View {
     @EnvironmentObject var router: Router
     
     var body: some View {
-        NBNavigationStack(path: $router.stack) {
+        MNavigationStack(path: $router.stack) {
             ScrollView {
                 Text("Header")
                 .id(AppNavigationState.ScrollAnchor.firstTabTop)
                 LazyVStack(alignment: .leading) {
                     ForEach(0..<20) { item in
-                        NBNavigationLink(value: Route.itemDetails(id: item)) {
+                        MNavigationLink(value: Route.itemDetails(id: item)) {
                             Text("Item: \(item)")
                                 .id(UUID())
                                 .padding(8)
@@ -43,7 +42,7 @@ struct FirstTabHomeView: View {
                 }
                 
             }
-            .nbNavigationDestination(for: Route.self) { $0 }
+            .mNavigationDestination(for: Route.self) { $0 }
             .navigationTitle("First level")
             .navigationBarTitleDisplayMode(.inline)
         }

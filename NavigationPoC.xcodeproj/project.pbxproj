@@ -31,6 +31,7 @@
 		F191BB892A96308300462471 /* SecondTabDeeplinkResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191BB882A96308300462471 /* SecondTabDeeplinkResolver.swift */; };
 		F191BB8C2A963D2D00462471 /* DeeplinkResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191BB8B2A963D2D00462471 /* DeeplinkResolver.swift */; };
 		F191BB912A963F5000462471 /* AppNavigationState+DeeplinkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191BB902A963F5000462471 /* AppNavigationState+DeeplinkHandler.swift */; };
+		F191BB9E2A964EE300462471 /* MNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191BB9D2A964EE300462471 /* MNavigation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		F191BB8A2A9632F900462471 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F191BB8B2A963D2D00462471 /* DeeplinkResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkResolver.swift; sourceTree = "<group>"; };
 		F191BB902A963F5000462471 /* AppNavigationState+DeeplinkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppNavigationState+DeeplinkHandler.swift"; sourceTree = "<group>"; };
+		F191BB9D2A964EE300462471 /* MNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNavigation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +197,7 @@
 				F191BB802A9626FF00462471 /* Router.swift */,
 				F191BB822A96271500462471 /* Route.swift */,
 				F191BB8F2A963ED600462471 /* Deeplinks */,
+				F191BB9D2A964EE300462471 /* MNavigation.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -362,6 +365,7 @@
 				F16AD91F2A94A8B200694AA6 /* ItemDetailsView.swift in Sources */,
 				F191BB7C2A95EC7B00462471 /* Snackbar.swift in Sources */,
 				F16AD9212A94A8C100694AA6 /* InfoView.swift in Sources */,
+				F191BB9E2A964EE300462471 /* MNavigation.swift in Sources */,
 				F16AD8EC2A94A71600694AA6 /* NavigationPoCApp.swift in Sources */,
 				F191BB912A963F5000462471 /* AppNavigationState+DeeplinkHandler.swift in Sources */,
 				F16AD92B2A94B16100694AA6 /* SecondLevelView.swift in Sources */,
@@ -531,7 +535,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -561,7 +565,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

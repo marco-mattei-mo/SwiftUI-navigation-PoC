@@ -5,7 +5,6 @@
 //  Created by Mattei, Marco-MIGROSONLINE on 22.08.23.
 //
 
-import NavigationBackport
 import SwiftUI
 
 struct SecondTabHomeView: View {
@@ -13,9 +12,9 @@ struct SecondTabHomeView: View {
     @EnvironmentObject var router: Router
     
     var body: some View {
-        NBNavigationStack(path: $router.stack) {
+        MNavigationStack(path: $router.stack) {
             VStack {
-                NBNavigationLink(value: Route.secondTabFirstLevel) {
+                MNavigationLink(value: Route.secondTabFirstLevel) {
                     Text("Go to first level")
                 }
                 
@@ -40,7 +39,7 @@ struct SecondTabHomeView: View {
             }
             .navigationTitle("Second tab home")
             .navigationBarTitleDisplayMode(.inline)
-            .nbNavigationDestination(for: Route.self) { $0 }
+            .mNavigationDestination(for: Route.self) { $0 }
         }
         
     }
