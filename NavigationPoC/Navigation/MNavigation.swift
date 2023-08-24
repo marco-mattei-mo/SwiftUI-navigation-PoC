@@ -1,9 +1,12 @@
 import SwiftUI
 import NavigationBackport
 
-/* Even though the library used in the project ensures that it's using the native NavigationStack under the hood
- if the app is running on iOS 16, I saw that it's still using some custom modifiers and stuff like that. In order
- to ensure that we are actually really using the native ones, I created those custom "M..." views and modifiers.
+/*
+ NavigationStack is only supported from iOS 16.0. I found a library that allows to using NavigationStack and its
+ functions on iOS versions < 16.0. (https://github.com/johnpatrickmorgan/NavigationBackport)
+ Even though the library used ensures that it's using the native NavigationStack under the hood when the app is running on iOS 16,
+ I saw that it's still using some custom modifiers and stuff like that.
+ In order to ensure that we are actually really using the native ones, I created those custom "M..." views and modifiers.
  So in the code, we only use those views and modifiers, not the library ones.
  */
 
