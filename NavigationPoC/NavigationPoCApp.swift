@@ -7,9 +7,26 @@
 
 import SwiftUI
 
+class AppDelegate: NSObject, UIApplicationDelegate, ObservableObject {
+    
+    var app: NavigationPoCApp?
+        
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        print("App did finish launching with options")
+        return true
+    }
+}
+
+struct DIContainer {
+    static let appNavState = AppNavigationState.shared
+}
+
 @main
 struct NavigationPoCApp: App {
-    @StateObject var appNavigationState = AppNavigationState()
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    @ObservedObject var appNavigationState = DIContainer.appNavState
+
     
     var body: some Scene {
         WindowGroup {

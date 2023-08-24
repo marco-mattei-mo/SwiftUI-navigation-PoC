@@ -1,6 +1,9 @@
 import Combine
 
 class AppNavigationState: ObservableObject {
+    
+    static let shared = AppNavigationState()
+    
     enum AppTab {
         case firstTab
         case secondTab
@@ -28,8 +31,8 @@ class AppNavigationState: ObservableObject {
     }
     
     // Tab routers
-    @Published var firstTabRouter = Router()
-    @Published var secondTabRouter = Router()
+    let firstTabRouter = Router()
+    let secondTabRouter = Router()
     
     // Scroll listeners
     @Published var scrollToTopFirstTab = false
