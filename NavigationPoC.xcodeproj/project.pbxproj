@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F1456BCF2A9784E500480D11 /* DeeplinkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1456BCE2A9784E500480D11 /* DeeplinkError.swift */; };
 		F16AD8EC2A94A71600694AA6 /* NavigationPoCApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16AD8EB2A94A71600694AA6 /* NavigationPoCApp.swift */; };
 		F16AD8EE2A94A71600694AA6 /* FirstTabHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16AD8ED2A94A71600694AA6 /* FirstTabHomeView.swift */; };
 		F16AD8F02A94A71600694AA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F16AD8EF2A94A71600694AA6 /* Assets.xcassets */; };
@@ -52,6 +53,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F1456BCE2A9784E500480D11 /* DeeplinkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkError.swift; sourceTree = "<group>"; };
 		F16AD8E82A94A71600694AA6 /* NavigationPoC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NavigationPoC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F16AD8EB2A94A71600694AA6 /* NavigationPoCApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationPoCApp.swift; sourceTree = "<group>"; };
 		F16AD8ED2A94A71600694AA6 /* FirstTabHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTabHomeView.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 			children = (
 				F191BB902A963F5000462471 /* AppNavigationState+DeeplinkHandler.swift */,
 				F191BB842A962ACF00462471 /* DeeplinkSections.swift */,
+				F1456BCE2A9784E500480D11 /* DeeplinkError.swift */,
 				F191BB8B2A963D2D00462471 /* DeeplinkResolver.swift */,
 				F191BB862A962CBD00462471 /* FirstTabDeeplinkResolver.swift */,
 				F191BB882A96308300462471 /* SecondTabDeeplinkResolver.swift */,
@@ -350,6 +353,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1456BCF2A9784E500480D11 /* DeeplinkError.swift in Sources */,
 				F16AD9352A95067900694AA6 /* FullScreenSecondTabHome.swift in Sources */,
 				F16AD9252A94B0BB00694AA6 /* SecondTabHomeView.swift in Sources */,
 				F16AD92D2A94B1A100694AA6 /* FirstLevelView.swift in Sources */,

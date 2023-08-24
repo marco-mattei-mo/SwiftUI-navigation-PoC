@@ -8,7 +8,7 @@ struct SecondTabDeeplinkResolver: DeeplinkResolver {
     }
     
     func resolveNavStackForURL(_ components: URLComponents) throws -> [Route] {
-        guard components.host == AppSection.secondTab.rawValue || components.host == AppSection.fullScreenCover.rawValue else {
+        guard components.host == DeeplinkAppSection.secondTab.rawValue || components.host == DeeplinkAppSection.fullScreenCover.rawValue else {
             throw DeeplinkError.unrecognizedHost
         }
                 

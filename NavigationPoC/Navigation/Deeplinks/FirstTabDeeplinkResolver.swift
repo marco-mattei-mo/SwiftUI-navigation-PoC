@@ -11,7 +11,7 @@ struct FirstTabDeeplinkResolver: DeeplinkResolver {
     }
     
     func resolveNavStackForURL(_ components: URLComponents) throws -> [Route] {
-        guard components.host == AppSection.firstTab.rawValue else {
+        guard components.host == DeeplinkAppSection.firstTab.rawValue else {
             throw DeeplinkError.unrecognizedHost
         }
         

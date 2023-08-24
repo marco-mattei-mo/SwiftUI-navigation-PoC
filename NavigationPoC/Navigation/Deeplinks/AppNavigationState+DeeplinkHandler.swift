@@ -1,15 +1,6 @@
 import Foundation
 
-extension AppNavigationState {
-    private enum DeeplinkPath: String {
-        case orders
-    }
-    
-    private enum DeeplinkOrdersPath: String {
-        case all
-        case details
-    }
-    
+extension AppNavigationState {    
     func handleUrl(_ url: URL) {
         do {
             guard let components = URLComponents(url: url, resolvingAgainstBaseURL: false) else { return }
@@ -18,7 +9,7 @@ extension AppNavigationState {
                 throw DeeplinkError.invalidURL
             }
             
-            guard let section = AppSection(rawValue: host) else {
+            guard let section = DeeplinkAppSection(rawValue: host) else {
                 throw DeeplinkError.unrecognizedHost
             }
             
