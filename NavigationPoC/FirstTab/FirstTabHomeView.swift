@@ -6,43 +6,39 @@
 //
 
 import SwiftUI
+import Factory
 
 struct FirstTabHomeView: View {
-    @EnvironmentObject var appNavState: AppNavigationState
-    @EnvironmentObject var router: Router
-    
+    @Injected(\.appNavigationController) var appNavigationController
+
     var body: some View {
-        MNavigationStack(path: $router.stack) {
-            ScrollView {
-                Text("Header")
-                .id(AppNavigationState.ScrollAnchor.firstTabTop)
-                LazyVStack(alignment: .leading) {
-                    ForEach(0..<20) { item in
-                        MNavigationLink(value: Route.itemDetails(id: item)) {
-                            Text("Item: \(item)")
-                                .id(UUID())
-                                .padding(8)
-                        }
-                        Divider()
+        ScrollView {
+            Text("Header")
+                .id(ConcreteAppNavigationController.ScrollAnchor.firstTabTop)
+            LazyVStack(alignment: .leading) {
+                ForEach(0..<20) { item in
+                    MNavigationLink(value: Route.itemDetails(id: item)) {
+                        Text("Item: \(item)")
+                            .id(UUID())
+                            .padding(8)
                     }
+                    Divider()
                 }
-                Divider()
-                    .padding(.bottom, 32)
-                Button {
-                    router.push(to: .info)
-                } label: {
-                    Text("Info")
-                }
-                .padding(.bottom, 32)
-                
-                Button {
-                    appNavState.presentFullScreenCover(screen: .secondTabFullScreen)
-                } label: {
-                    Text("Fullscreen cover")
-                }
-                
             }
-            .mNavigationDestination(for: Route.self) { $0 }
+            Divider()
+                .padding(.bottom, 32)
+            Button {
+                appNavigationController.navigateToInfo()
+            } label: {
+                Text("Info")
+            }
+            .padding(.bottom, 32)
+            
+            Button {
+                appNavigationController.presentSecondTabAsFullScreen()
+            } label: {
+                Text("Fullscreen cover")
+            }
             .navigationTitle("First level")
             .navigationBarTitleDisplayMode(.inline)
         }
@@ -52,6 +48,5 @@ struct FirstTabHomeView: View {
 struct FirstTabHomeView_Previews: PreviewProvider {
     static var previews: some View {
         FirstTabHomeView()
-            .environmentObject(Router())
     }
 }

@@ -1,32 +1,21 @@
 import SwiftUI
+import Factory
 
 class ThirdLevelViewModel: ObservableObject {
-    let appNavState: AppNavigationState
-    var viewRouter: Router? // If required, can be injected with "setViewRouter()"
-    
-    init(appNavState: AppNavigationState = DIContainer.appNavState,
-         viewRouter: Router? = nil) {
-        self.appNavState = appNavState
-        self.viewRouter = viewRouter
-    }
-    
-    func setViewRouter(viewRouter: Router) {
-        self.viewRouter = viewRouter
-    }
+    @Injected(\.appNavigationController) var appNavigationController
     
     func popToRoot() {
-        viewRouter?.popToRoot()
+        appNavigationController.popToRoot()
     }
     
     func showSnackbar() {
-        appNavState.showSnackbar(message: "a snackbar message")
+        appNavigationController.showSnackbar(message: "a snackbar message")
     }
 }
 
 struct ThirdLevelView: View {
-    @EnvironmentObject var router: Router
-    @EnvironmentObject var appNavState: AppNavigationState
     @StateObject var viewModel = ThirdLevelViewModel()
+    @Injected(\.appNavigationController) var appNavigationController
     
     var body: some View {
         VStack {
@@ -41,7 +30,7 @@ struct ThirdLevelView: View {
             }
             
             Button {
-                router.pop(to: .secondTabFirstLevel)
+                appNavigationController.popToSecondTabFirstLevel()
             } label: {
                 Text("Pop to first")
             }
@@ -52,16 +41,11 @@ struct ThirdLevelView: View {
                 Text("Show snackbar")
             }
         }
-        .onAppear {
-            viewModel.setViewRouter(viewRouter: router) // Inject router 'onAppear()'
-        }
     }
 }
 
 struct ThirdLevelView_Previews: PreviewProvider {
     static var previews: some View {
         ThirdLevelView()
-            .environmentObject(Router())
-            .environmentObject(AppNavigationState())
     }
 }

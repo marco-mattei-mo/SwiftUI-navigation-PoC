@@ -23,8 +23,12 @@
 		F16AD92D2A94B1A100694AA6 /* FirstLevelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16AD92C2A94B1A100694AA6 /* FirstLevelView.swift */; };
 		F16AD92F2A94B1A900694AA6 /* ThirdLevelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16AD92E2A94B1A900694AA6 /* ThirdLevelView.swift */; };
 		F16AD9352A95067900694AA6 /* FullScreenSecondTabHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16AD9342A95067900694AA6 /* FullScreenSecondTabHome.swift */; };
+		F17AB58A2A9F443F00BD3DFB /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = F17AB5892A9F443F00BD3DFB /* Factory */; };
+		F17AB58C2A9F449B00BD3DFB /* DIContainers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17AB58B2A9F449B00BD3DFB /* DIContainers.swift */; };
+		F17AB5902A9F640400BD3DFB /* AppNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17AB58F2A9F640400BD3DFB /* AppNavigationController.swift */; };
+		F17AB5922A9F641B00BD3DFB /* AppTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17AB5912A9F641B00BD3DFB /* AppTab.swift */; };
 		F191BB7C2A95EC7B00462471 /* Snackbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191BB7B2A95EC7B00462471 /* Snackbar.swift */; };
-		F191BB7E2A9626B800462471 /* AppNavigationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191BB7D2A9626B800462471 /* AppNavigationState.swift */; };
+		F191BB7E2A9626B800462471 /* ConcreteAppNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191BB7D2A9626B800462471 /* ConcreteAppNavigationController.swift */; };
 		F191BB812A9626FF00462471 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191BB802A9626FF00462471 /* Router.swift */; };
 		F191BB832A96271500462471 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191BB822A96271500462471 /* Route.swift */; };
 		F191BB852A962ACF00462471 /* DeeplinkSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191BB842A962ACF00462471 /* DeeplinkSections.swift */; };
@@ -71,8 +75,11 @@
 		F16AD92C2A94B1A100694AA6 /* FirstLevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLevelView.swift; sourceTree = "<group>"; };
 		F16AD92E2A94B1A900694AA6 /* ThirdLevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdLevelView.swift; sourceTree = "<group>"; };
 		F16AD9342A95067900694AA6 /* FullScreenSecondTabHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenSecondTabHome.swift; sourceTree = "<group>"; };
+		F17AB58B2A9F449B00BD3DFB /* DIContainers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainers.swift; sourceTree = "<group>"; };
+		F17AB58F2A9F640400BD3DFB /* AppNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigationController.swift; sourceTree = "<group>"; };
+		F17AB5912A9F641B00BD3DFB /* AppTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTab.swift; sourceTree = "<group>"; };
 		F191BB7B2A95EC7B00462471 /* Snackbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snackbar.swift; sourceTree = "<group>"; };
-		F191BB7D2A9626B800462471 /* AppNavigationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigationState.swift; sourceTree = "<group>"; };
+		F191BB7D2A9626B800462471 /* ConcreteAppNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcreteAppNavigationController.swift; sourceTree = "<group>"; };
 		F191BB802A9626FF00462471 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		F191BB822A96271500462471 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		F191BB842A962ACF00462471 /* DeeplinkSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkSections.swift; sourceTree = "<group>"; };
@@ -90,6 +97,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F16AD9172A94A74F00694AA6 /* NavigationBackport in Frameworks */,
+				F17AB58A2A9F443F00BD3DFB /* Factory in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +149,7 @@
 				F16AD8EF2A94A71600694AA6 /* Assets.xcassets */,
 				F16AD8F12A94A71600694AA6 /* Preview Content */,
 				F191BB7B2A95EC7B00462471 /* Snackbar.swift */,
+				F17AB58B2A9F449B00BD3DFB /* DIContainers.swift */,
 			);
 			path = NavigationPoC;
 			sourceTree = "<group>";
@@ -195,11 +204,13 @@
 		F191BB7F2A9626C300462471 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
-				F191BB7D2A9626B800462471 /* AppNavigationState.swift */,
+				F17AB58F2A9F640400BD3DFB /* AppNavigationController.swift */,
+				F191BB7D2A9626B800462471 /* ConcreteAppNavigationController.swift */,
 				F191BB802A9626FF00462471 /* Router.swift */,
 				F191BB822A96271500462471 /* Route.swift */,
 				F191BB8F2A963ED600462471 /* Deeplinks */,
 				F191BB9D2A964EE300462471 /* MNavigation.swift */,
+				F17AB5912A9F641B00BD3DFB /* AppTab.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -235,6 +246,7 @@
 			name = NavigationPoC;
 			packageProductDependencies = (
 				F16AD9162A94A74F00694AA6 /* NavigationBackport */,
+				F17AB5892A9F443F00BD3DFB /* Factory */,
 			);
 			productName = NavigationPoC;
 			productReference = F16AD8E82A94A71600694AA6 /* NavigationPoC.app */;
@@ -310,6 +322,7 @@
 			mainGroup = F16AD8DF2A94A71600694AA6;
 			packageReferences = (
 				F16AD9152A94A74E00694AA6 /* XCRemoteSwiftPackageReference "NavigationBackport" */,
+				F17AB5882A9F443F00BD3DFB /* XCRemoteSwiftPackageReference "Factory" */,
 			);
 			productRefGroup = F16AD8E92A94A71600694AA6 /* Products */;
 			projectDirPath = "";
@@ -357,10 +370,12 @@
 				F16AD9352A95067900694AA6 /* FullScreenSecondTabHome.swift in Sources */,
 				F16AD9252A94B0BB00694AA6 /* SecondTabHomeView.swift in Sources */,
 				F16AD92D2A94B1A100694AA6 /* FirstLevelView.swift in Sources */,
-				F191BB7E2A9626B800462471 /* AppNavigationState.swift in Sources */,
+				F191BB7E2A9626B800462471 /* ConcreteAppNavigationController.swift in Sources */,
 				F191BB8C2A963D2D00462471 /* DeeplinkResolver.swift in Sources */,
 				F191BB832A96271500462471 /* Route.swift in Sources */,
+				F17AB5902A9F640400BD3DFB /* AppNavigationController.swift in Sources */,
 				F191BB872A962CBD00462471 /* FirstTabDeeplinkResolver.swift in Sources */,
+				F17AB58C2A9F449B00BD3DFB /* DIContainers.swift in Sources */,
 				F191BB892A96308300462471 /* SecondTabDeeplinkResolver.swift in Sources */,
 				F191BB812A9626FF00462471 /* Router.swift in Sources */,
 				F16AD8EE2A94A71600694AA6 /* FirstTabHomeView.swift in Sources */,
@@ -373,6 +388,7 @@
 				F16AD8EC2A94A71600694AA6 /* NavigationPoCApp.swift in Sources */,
 				F191BB912A963F5000462471 /* AppNavigationState+DeeplinkHandler.swift in Sources */,
 				F16AD92B2A94B16100694AA6 /* SecondLevelView.swift in Sources */,
+				F17AB5922A9F641B00BD3DFB /* AppTab.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -705,6 +721,14 @@
 				minimumVersion = 0.9.0;
 			};
 		};
+		F17AB5882A9F443F00BD3DFB /* XCRemoteSwiftPackageReference "Factory" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hmlongco/Factory.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -712,6 +736,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F16AD9152A94A74E00694AA6 /* XCRemoteSwiftPackageReference "NavigationBackport" */;
 			productName = NavigationBackport;
+		};
+		F17AB5892A9F443F00BD3DFB /* Factory */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F17AB5882A9F443F00BD3DFB /* XCRemoteSwiftPackageReference "Factory" */;
+			productName = Factory;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

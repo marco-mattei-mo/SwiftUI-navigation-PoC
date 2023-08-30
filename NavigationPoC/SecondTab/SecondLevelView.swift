@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct SecondLevelView: View {
-    @EnvironmentObject var router: Router
 
     var body: some View {
         MNavigationLink(value: Route.secondTabThirdLevel) {
@@ -16,7 +15,6 @@ struct SecondLevelView_Previews: PreviewProvider {
     static var previews: some View {
         MNavigationStack {
             SecondLevelView()
-                .environmentObject(Router())
         }
     }
 }

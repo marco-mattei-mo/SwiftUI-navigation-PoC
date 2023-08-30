@@ -1,6 +1,8 @@
 import SwiftUI
 
 enum Route: Hashable {
+    case firstTabHomeView
+    case secondTabHomeView
     case itemDetails(id: Int)
     case info
     case secondTabFirstLevel
@@ -16,6 +18,10 @@ extension Route: Identifiable {
 extension Route: View {
     var body: some View {
         switch self {
+        case .firstTabHomeView:
+            FirstTabHomeView()
+        case .secondTabHomeView:
+            SecondTabHomeView()
         case .itemDetails(let id):
             ItemDetailsView(id: id)
         case .info:

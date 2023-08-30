@@ -1,6 +1,6 @@
 import Foundation
 
-extension AppNavigationState {    
+extension ConcreteAppNavigationController {
     func handleUrl(_ url: URL) {
         do {
             guard let components = URLComponents(url: url, resolvingAgainstBaseURL: false) else { return }
