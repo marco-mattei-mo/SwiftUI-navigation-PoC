@@ -12,7 +12,7 @@ class ConcreteAppNavigationController: AppNavigationController {
                         popSelectedTabToRoot()
                     }
                 case .secondTab:
-                    if firstTabRouter.stack.isEmpty {
+                    if secondTabRouter.stack.isEmpty {
                         scrollToTopSecondTab = true
                     } else {
                         popSelectedTabToRoot()
