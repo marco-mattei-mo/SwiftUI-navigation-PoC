@@ -37,6 +37,7 @@
 		F191BB8C2A963D2D00462471 /* DeeplinkResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191BB8B2A963D2D00462471 /* DeeplinkResolver.swift */; };
 		F191BB912A963F5000462471 /* AppNavigationState+DeeplinkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191BB902A963F5000462471 /* AppNavigationState+DeeplinkHandler.swift */; };
 		F191BB9E2A964EE300462471 /* MNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191BB9D2A964EE300462471 /* MNavigation.swift */; };
+		F1EE82A82AA1C24A00ECEFE7 /* RouteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EE82A72AA1C24A00ECEFE7 /* RouteView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 		F191BB8B2A963D2D00462471 /* DeeplinkResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkResolver.swift; sourceTree = "<group>"; };
 		F191BB902A963F5000462471 /* AppNavigationState+DeeplinkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppNavigationState+DeeplinkHandler.swift"; sourceTree = "<group>"; };
 		F191BB9D2A964EE300462471 /* MNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNavigation.swift; sourceTree = "<group>"; };
+		F1EE82A72AA1C24A00ECEFE7 /* RouteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +213,7 @@
 				F191BB8F2A963ED600462471 /* Deeplinks */,
 				F191BB9D2A964EE300462471 /* MNavigation.swift */,
 				F17AB5912A9F641B00BD3DFB /* AppTab.swift */,
+				F1EE82A72AA1C24A00ECEFE7 /* RouteView.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 				F191BB8C2A963D2D00462471 /* DeeplinkResolver.swift in Sources */,
 				F191BB832A96271500462471 /* Route.swift in Sources */,
 				F17AB5902A9F640400BD3DFB /* AppNavigationController.swift in Sources */,
+				F1EE82A82AA1C24A00ECEFE7 /* RouteView.swift in Sources */,
 				F191BB872A962CBD00462471 /* FirstTabDeeplinkResolver.swift in Sources */,
 				F17AB58C2A9F449B00BD3DFB /* DIContainers.swift in Sources */,
 				F191BB892A96308300462471 /* SecondTabDeeplinkResolver.swift in Sources */,

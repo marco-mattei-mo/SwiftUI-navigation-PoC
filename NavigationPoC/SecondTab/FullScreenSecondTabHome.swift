@@ -11,12 +11,18 @@ import Factory
 struct FullScreenSecondTabHomeView: View {
     @Injected(\.appNavigationController) var appNavigationController
     
+    let isFullScreen: Bool
+
     var body: some View {
             SecondTabHomeView()
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
-                        appNavigationController.dismissCoverAndSheet()
+                        if isFullScreen {
+                            appNavigationController.dismissFullScreenCover()
+                        } else {
+                            appNavigationController.dismissSheet()
+                        }
                     } label: {
                         Text("Close")
                     }
@@ -31,6 +37,6 @@ struct FullScreenSecondTabHomeView: View {
 
 struct FullScreenSecondTabHomeView_Previews: PreviewProvider {
     static var previews: some View {
-        FullScreenSecondTabHomeView()
+        FullScreenSecondTabHomeView(isFullScreen: true)
     }
 }

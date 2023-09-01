@@ -24,14 +24,20 @@ struct NavigationPoCApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @StateObject var appNavigationController = Container.shared.appNavigationController() as! ConcreteAppNavigationController
     
+    let firstTabHomeView = RouteView(route: .firstTabHomeView)
+    let secondTabHomeView = RouteView(route: .secondTabHomeView)
     
     var body: some Scene {
         WindowGroup {
             ScrollViewReader { proxy in
                 TabView(selection: $appNavigationController.selectedTab) {
                     MNavigationStack(path: $appNavigationController.firstTabRouter.stack) {
-                        Route.firstTabHomeView
-                            .mNavigationDestination(for: Route.self) { $0 }
+                        firstTabHomeView
+                            .onAppear {
+                                appNavigationController.currentRouter = appNavigationController.firstTabRouter
+                                appNavigationController.firstTabRouter.homeView = firstTabHomeView
+                            }
+                            .mNavigationDestination(for: RouteView.self) { $0 }
                     }
                     .tag(AppTab.firstTab)
                     .tabItem {
@@ -46,8 +52,11 @@ struct NavigationPoCApp: App {
                         }
                     }
                     MNavigationStack(path: $appNavigationController.secondTabRouter.stack) {
-                        Route.secondTabHomeView
-                            .mNavigationDestination(for: Route.self) { $0 }
+                        secondTabHomeView
+                            .onAppear {
+                                appNavigationController.secondTabRouter.homeView = secondTabHomeView
+                            }
+                            .mNavigationDestination(for: RouteView.self) { $0 }
                     }
                     .tag(AppTab.secondTab)
                     .tabItem {
@@ -59,21 +68,21 @@ struct NavigationPoCApp: App {
                         }
                     }
                 }
-                .mSnackbar(isShowing: $appNavigationController.isSnackbarPresented, message: appNavigationController.snackbarMessage, messageType: .success)
-                .fullScreenCover(item: $appNavigationController.presentedFullScreen, content: { route in
-                    MNavigationStack(path: $appNavigationController.fullScreenRouter.stack) {
-                        route
-                            .mNavigationDestination(for: Route.self) { $0 }
-                    }
-                    .mSnackbar(isShowing: $appNavigationController.isSnackbarPresented, message: appNavigationController.snackbarMessage, messageType: .success)
-                })
-                .sheet(item: $appNavigationController.presentedSheet, content: { route in
-                    MNavigationStack(path: $appNavigationController.sheetRouter.stack) {
-                        route
-                            .mNavigationDestination(for: Route.self) { $0 }
-                    }
-                    .mSnackbar(isShowing: $appNavigationController.isSnackbarPresented, message: appNavigationController.snackbarMessage, messageType: .success)
-                })
+//                .mSnackbar(isShowing: $appNavigationController.isSnackbarPresented, message: appNavigationController.snackbarMessage, messageType: .success)
+//                .fullScreenCover(item: $appNavigationController.presentedFullScreen, content: { route in
+//                    MNavigationStack(path: $appNavigationController.fullScreenRouter.stack) {
+//                        route
+//                            .mNavigationDestination(for: Route.self) { $0 }
+//                    }
+//                    .mSnackbar(isShowing: $appNavigationController.isSnackbarPresented, message: appNavigationController.snackbarMessage, messageType: .success)
+//                })
+//                .sheet(item: $appNavigationController.presentedSheet, content: { route in
+//                    MNavigationStack(path: $appNavigationController.sheetRouter.stack) {
+//                        route
+//                            .mNavigationDestination(for: Route.self) { $0 }
+//                    }
+//                    .mSnackbar(isShowing: $appNavigationController.isSnackbarPresented, message: appNavigationController.snackbarMessage, messageType: .success)
+//                })
                 .toolbar {
                     ToolbarItem(placement: .bottomBar) {
                         Button {

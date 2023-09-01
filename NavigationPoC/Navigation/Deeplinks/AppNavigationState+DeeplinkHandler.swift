@@ -13,21 +13,21 @@ extension ConcreteAppNavigationController {
                 throw DeeplinkError.unrecognizedHost
             }
             
-            dismissCoverAndSheet()
+            dismissAllSheetsAndCovers()
             
             switch section {
             case .firstTab:
                 selectTab(.firstTab)
                 let navStack = try FirstTabDeeplinkResolver().resolveNavStackForURL(components)
-                firstTabRouter.replace(with: navStack)
+                //firstTabRouter.replace(with: navStack)
             case .secondTab:
                 selectTab(.secondTab)
                 let navStack = try SecondTabDeeplinkResolver().resolveNavStackForURL(components)
-                secondTabRouter.replace(with: navStack)
+                //secondTabRouter.replace(with: navStack)
             case .fullScreenCover:
-                presentFullScreenCover(screen: .secondTabFullScreen)
+                //presentFullScreenCover(with: .secondTabFullScreen)
                 let navStack = try SecondTabDeeplinkResolver().resolveNavStackForURL(components)
-                fullScreenRouter.replace(with: navStack)
+                //TODO: fullScreenRouter.replace(with: navStack)
             }
         } catch {
             print("deeplink failure")

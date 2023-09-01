@@ -1,13 +1,27 @@
 import Combine
+import Foundation
 
 class Router: ObservableObject {
-    @Published var stack = [Route]()
+    @Published var stack = [RouteView]()
+    var homeView: RouteView?
+    
+    func currentView() -> RouteView {
+        if stack.isEmpty {
+            return homeView!
+        } else {
+            return stack.last!
+        }
+    }
 
-    func push(to screen: Route) {
+    func push(to screen: RouteView) {
         stack.append(screen)
     }
     
-    func replace(with stack: [Route]) {
+    func append(with routes: [RouteView]) {
+        stack.append(contentsOf: routes)
+    }
+    
+    func replace(with stack: [RouteView]) {
         self.stack = stack
     }
     
@@ -15,7 +29,7 @@ class Router: ObservableObject {
         _ = stack.popLast()
     }
     
-    func pop(to: Route) {
+    func pop(to: RouteView) {
         guard let indexOfScreen = stack.lastIndex(of: to) else { return }
         
         stack.removeLast(stack.count - 1 - indexOfScreen)

@@ -8,32 +8,27 @@ enum Route: Hashable {
     case secondTabFirstLevel
     case secondTabSecondLevel
     case secondTabThirdLevel
-    case secondTabFullScreen
+    case secondTabFullScreen(isFullScreen: Bool)
 }
 
 extension Route: Identifiable {
     var id: Self { self }
 }
 
-extension Route: View {
-    var body: some View {
+extension Route {
+    @ViewBuilder
+    func getView() -> RouteView {
+        RouteView(route: self)
+    }
+}
+
+extension Route {
+    func getCompleteNavStack() -> [Route] {
         switch self {
-        case .firstTabHomeView:
-            FirstTabHomeView()
-        case .secondTabHomeView:
-            SecondTabHomeView()
-        case .itemDetails(let id):
-            ItemDetailsView(id: id)
-        case .info:
-            InfoView()
-        case .secondTabFirstLevel:
-            FirstLevelView()
-        case .secondTabSecondLevel:
-            SecondLevelView()
         case .secondTabThirdLevel:
-            ThirdLevelView()
-        case .secondTabFullScreen:
-            FullScreenSecondTabHomeView()
+            return [.secondTabFirstLevel, .secondTabSecondLevel, .secondTabThirdLevel]
+        default:
+            return [self]
         }
     }
 }

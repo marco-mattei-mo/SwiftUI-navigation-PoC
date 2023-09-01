@@ -3,7 +3,7 @@ import SwiftUI
 struct SecondLevelView: View {
 
     var body: some View {
-        MNavigationLink(value: Route.secondTabThirdLevel) {
+        MNavigationLink(value: Route.secondTabThirdLevel.getView()) {
             Text("Go to third level")
         }
         .navigationTitle("Second level")

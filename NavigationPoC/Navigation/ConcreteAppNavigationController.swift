@@ -3,24 +3,25 @@ import Combine
 class ConcreteAppNavigationController: AppNavigationController {
     @Published var selectedTab: AppTab = .firstTab {
         didSet {
+            currentRouter = getCurrentTabRouter()
             if oldValue == selectedTab {
                 switch selectedTab {
                 case .firstTab:
                     if firstTabRouter.stack.isEmpty {
                         scrollToTopFirstTab = true
-                    } else {
-                        popSelectedTabToRoot()
+                        return
                     }
                 case .secondTab:
                     if secondTabRouter.stack.isEmpty {
                         scrollToTopSecondTab = true
-                    } else {
-                        popSelectedTabToRoot()
+                        return
                     }
                 }
+                popToRoot()
             }
         }
     }
+    
     
     // Tab routers
     @Published var firstTabRouter = Router()
@@ -37,15 +38,8 @@ class ConcreteAppNavigationController: AppNavigationController {
         case secondTabTop
     }
     
-    // Full screen, sheets and snackbar properties
-    @Published var presentedFullScreen: Route? = nil
-    @Published var fullScreenRouter = Router()
-    
-    @Published var presentedSheet: Route? = nil
-    @Published var sheetRouter = Router()
-
-    @Published var isSnackbarPresented: Bool = false
-    @Published var snackbarMessage: String = ""
+    var currentRouter: Router!
+    var routerStack: [Router] = []
     
     init() {
         firstTabRouter.objectWillChange.sink { [weak self] (_) in
@@ -54,25 +48,39 @@ class ConcreteAppNavigationController: AppNavigationController {
         secondTabRouter.objectWillChange.sink { [weak self] (_) in
             self?.objectWillChange.send()
         }.store(in: &routersCancellables)
-        fullScreenRouter.objectWillChange.sink { [weak self] (_) in
-            self?.objectWillChange.send()
-        }.store(in: &routersCancellables)
-        sheetRouter.objectWillChange.sink { [weak self] (_) in
-            self?.objectWillChange.send()
-        }.store(in: &routersCancellables)
     }
 
     func selectTab(_ tab: AppTab) {
         selectedTab = tab
     }
     
+    func push(to route: RouteView) {
+        currentRouter.push(to: route)
+    }
+    
+    func append(with routes: [RouteView]) {
+        currentRouter.append(with: routes)
+    }
+    
+    func pop() {
+        currentRouter.pop()
+    }
+    
+    func pop(to route: RouteView) {
+        currentRouter.pop(to: route)
+    }
+    
+    func popToRoot() {
+        currentRouter.popToRoot()
+    }
+    
     func resetAll() {
+        dismissAllSheetsAndCovers()
         selectedTab = .firstTab
         scrollToTopFirstTab = true
         scrollToTopSecondTab = true
         firstTabRouter.popToRoot()
         secondTabRouter.popToRoot()
-        dismissCoverAndSheet()
         hideSnackbar()
     }
     
@@ -85,47 +93,61 @@ class ConcreteAppNavigationController: AppNavigationController {
         }
     }
     
-    func presentFullScreenCover(screen: Route) {
-        presentedFullScreen = screen
+    func presentFullScreenCover(with route: RouteView) {
+        currentView().presentFullScreenCover(with: route)
+        routerStack.append(currentRouter)
+        currentRouter = currentView().viewModel.fullScreenRouter
     }
     
     func dismissFullScreenCover() {
-        presentedFullScreen = nil
-        fullScreenRouter.popToRoot()
+        guard !routerStack.isEmpty else { return }
+        currentRouter = routerStack.popLast()!
+        currentView().dismissFullScreenCover()
     }
     
-    func presentSheet(screen: Route) {
-        presentedSheet = screen
+    func presentSheet(with route: RouteView) {
+        currentView().setOnDismissSheet { [weak self] in
+            self?.dismissSheet()
+        }
+        currentView().presentSheet(with: route)
+        routerStack.append(currentRouter)
+        currentRouter = currentView().viewModel.sheetRouter
     }
     
     func dismissSheet() {
-        presentedSheet = nil
-        sheetRouter.popToRoot()
-    }
-    
-    func dismissCoverAndSheet() {
-        dismissFullScreenCover()
-        dismissSheet()
+        guard !routerStack.isEmpty else { return }
+        currentRouter = routerStack.popLast()!
+        currentView().setOnDismissSheet(nil)
+        currentView().dismissSheet()
     }
     
     func showSnackbar(message: String) {
-        isSnackbarPresented = true
-        snackbarMessage = message
+        currentView().showSnackbar(message: message)
     }
     
     func hideSnackbar() {
-        isSnackbarPresented = false
+        currentView().hideSnackbar()
     }
     
-    func currentStack() -> Router {
-        if presentedFullScreen != nil {
-            return fullScreenRouter
+    func showAlert(title: String, message: String, buttons: [AlertButton]) {
+        currentView().showAlert(title: title, message: message, buttons: buttons)
+    }
+    
+    func currentView() -> RouteView {
+        currentRouter.currentView()
+    }
+    
+    func dismissAllSheetsAndCovers() {
+        while !routerStack.isEmpty {
+            currentRouter = routerStack.popLast()!
+            currentView().setOnDismissSheet(nil)
+            currentView().dismissSheet()
+            currentView().dismissFullScreenCover()
         }
-        
-        if presentedSheet != nil {
-            return sheetRouter
-        }
-        
+        currentRouter = getCurrentTabRouter()
+    }
+    
+    func getCurrentTabRouter() -> Router {
         switch selectedTab {
         case .firstTab:
             return firstTabRouter
@@ -134,39 +156,4 @@ class ConcreteAppNavigationController: AppNavigationController {
         }
     }
     
-    func navigateToInfo() {
-        currentStack().push(to: .info)
-    }
-    
-    func openItemDetails(id: Int) {
-        currentStack().push(to: .itemDetails(id: id))
-    }
-    
-    func presentSecondTabAsFullScreen() {
-       presentFullScreenCover(screen: .secondTabFullScreen)
-    }
-    
-    func navigateToSecondTabFirstLevel() {
-        currentStack().push(to: .secondTabFirstLevel)
-    }
-    
-    func navigateToSecondTabThirdLevel(includeNavstack: Bool) {
-        if includeNavstack {
-            currentStack().replace(with: [.secondTabFirstLevel, .secondTabSecondLevel, .secondTabThirdLevel])
-        } else {
-            currentStack().push(to: .secondTabThirdLevel)
-        }
-    }
-    
-    func presentSecondTabAsSheet() {
-        presentSheet(screen: .secondTabFullScreen)
-    }
-    
-    func popToRoot() {
-        currentStack().popToRoot()
-    }
-    
-    func popToSecondTabFirstLevel() {
-        currentStack().pop(to: .secondTabFirstLevel)
-    }
 }
