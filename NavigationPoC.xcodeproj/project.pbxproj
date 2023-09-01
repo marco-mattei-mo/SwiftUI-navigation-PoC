@@ -38,6 +38,9 @@
 		F191BB912A963F5000462471 /* AppNavigationState+DeeplinkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191BB902A963F5000462471 /* AppNavigationState+DeeplinkHandler.swift */; };
 		F191BB9E2A964EE300462471 /* MNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191BB9D2A964EE300462471 /* MNavigation.swift */; };
 		F1EE82A82AA1C24A00ECEFE7 /* RouteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EE82A72AA1C24A00ECEFE7 /* RouteView.swift */; };
+		F1EE82AA2AA20BBD00ECEFE7 /* RouteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EE82A92AA20BBD00ECEFE7 /* RouteViewModel.swift */; };
+		F1EE82AC2AA20CA300ECEFE7 /* AlertButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EE82AB2AA20CA300ECEFE7 /* AlertButton.swift */; };
+		F1EE82B22AA216F700ECEFE7 /* NavigationStackBackport in Frameworks */ = {isa = PBXBuildFile; productRef = F1EE82B12AA216F700ECEFE7 /* NavigationStackBackport */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +94,8 @@
 		F191BB902A963F5000462471 /* AppNavigationState+DeeplinkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppNavigationState+DeeplinkHandler.swift"; sourceTree = "<group>"; };
 		F191BB9D2A964EE300462471 /* MNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNavigation.swift; sourceTree = "<group>"; };
 		F1EE82A72AA1C24A00ECEFE7 /* RouteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteView.swift; sourceTree = "<group>"; };
+		F1EE82A92AA20BBD00ECEFE7 /* RouteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteViewModel.swift; sourceTree = "<group>"; };
+		F1EE82AB2AA20CA300ECEFE7 /* AlertButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,14 +211,10 @@
 		F191BB7F2A9626C300462471 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
-				F17AB58F2A9F640400BD3DFB /* AppNavigationController.swift */,
-				F191BB7D2A9626B800462471 /* ConcreteAppNavigationController.swift */,
+				F1EE82AF2AA20CF000ECEFE7 /* Components */,
+				F1EE82AD2AA20CCE00ECEFE7 /* Controller */,
+				F1EE82AE2AA20CD600ECEFE7 /* Route */,
 				F191BB802A9626FF00462471 /* Router.swift */,
-				F191BB822A96271500462471 /* Route.swift */,
-				F191BB8F2A963ED600462471 /* Deeplinks */,
-				F191BB9D2A964EE300462471 /* MNavigation.swift */,
-				F17AB5912A9F641B00BD3DFB /* AppTab.swift */,
-				F1EE82A72AA1C24A00ECEFE7 /* RouteView.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -229,6 +230,36 @@
 				F191BB882A96308300462471 /* SecondTabDeeplinkResolver.swift */,
 			);
 			path = Deeplinks;
+			sourceTree = "<group>";
+		};
+		F1EE82AD2AA20CCE00ECEFE7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F17AB58F2A9F640400BD3DFB /* AppNavigationController.swift */,
+				F191BB7D2A9626B800462471 /* ConcreteAppNavigationController.swift */,
+				F191BB8F2A963ED600462471 /* Deeplinks */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		F1EE82AE2AA20CD600ECEFE7 /* Route */ = {
+			isa = PBXGroup;
+			children = (
+				F191BB822A96271500462471 /* Route.swift */,
+				F1EE82A72AA1C24A00ECEFE7 /* RouteView.swift */,
+				F1EE82A92AA20BBD00ECEFE7 /* RouteViewModel.swift */,
+			);
+			path = Route;
+			sourceTree = "<group>";
+		};
+		F1EE82AF2AA20CF000ECEFE7 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				F17AB5912A9F641B00BD3DFB /* AppTab.swift */,
+				F1EE82AB2AA20CA300ECEFE7 /* AlertButton.swift */,
+				F191BB9D2A964EE300462471 /* MNavigation.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -376,10 +407,12 @@
 				F191BB7E2A9626B800462471 /* ConcreteAppNavigationController.swift in Sources */,
 				F191BB8C2A963D2D00462471 /* DeeplinkResolver.swift in Sources */,
 				F191BB832A96271500462471 /* Route.swift in Sources */,
+				F1EE82AA2AA20BBD00ECEFE7 /* RouteViewModel.swift in Sources */,
 				F17AB5902A9F640400BD3DFB /* AppNavigationController.swift in Sources */,
 				F1EE82A82AA1C24A00ECEFE7 /* RouteView.swift in Sources */,
 				F191BB872A962CBD00462471 /* FirstTabDeeplinkResolver.swift in Sources */,
 				F17AB58C2A9F449B00BD3DFB /* DIContainers.swift in Sources */,
+				F1EE82AC2AA20CA300ECEFE7 /* AlertButton.swift in Sources */,
 				F191BB892A96308300462471 /* SecondTabDeeplinkResolver.swift in Sources */,
 				F191BB812A9626FF00462471 /* Router.swift in Sources */,
 				F16AD8EE2A94A71600694AA6 /* FirstTabHomeView.swift in Sources */,

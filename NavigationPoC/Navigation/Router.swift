@@ -3,11 +3,11 @@ import Foundation
 
 class Router: ObservableObject {
     @Published var stack = [RouteView]()
-    var homeView: RouteView?
+    var rootView: RouteView?
     
     func currentView() -> RouteView {
         if stack.isEmpty {
-            return homeView!
+            return rootView!
         } else {
             return stack.last!
         }

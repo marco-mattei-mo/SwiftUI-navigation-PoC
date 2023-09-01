@@ -7,7 +7,7 @@ struct SecondTabDeeplinkResolver: DeeplinkResolver {
         case thirdLevel
     }
     
-    func resolveNavStackForURL(_ components: URLComponents) throws -> [Route] {
+    func resolveNavStackForURL(_ components: URLComponents) throws -> [RouteView] {
         guard components.host == DeeplinkAppSection.secondTab.rawValue || components.host == DeeplinkAppSection.fullScreenCover.rawValue else {
             throw DeeplinkError.unrecognizedHost
         }
@@ -18,11 +18,11 @@ struct SecondTabDeeplinkResolver: DeeplinkResolver {
         let deeplinkPath = DeeplinkPath(rawValue: String(path.removeFirst()))
         switch deeplinkPath {
         case .firstLevel:
-            return [.secondTabFirstLevel]
+            return [Route.secondTabFirstLevel.getView()]
         case .secondLevel:
-            return [.secondTabFirstLevel, .secondTabSecondLevel]
+            return [Route.secondTabFirstLevel.getView(), Route.secondTabSecondLevel.getView()]
         case .thirdLevel:
-            return [.secondTabFirstLevel, .secondTabSecondLevel, .secondTabThirdLevel]
+            return [Route.secondTabFirstLevel.getView(), Route.secondTabSecondLevel.getView(), Route.secondTabThirdLevel.getView()]
         default:
             throw DeeplinkError.unrecognizedPath
         }

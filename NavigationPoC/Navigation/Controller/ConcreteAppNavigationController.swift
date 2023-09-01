@@ -38,7 +38,7 @@ class ConcreteAppNavigationController: AppNavigationController {
         case secondTabTop
     }
     
-    var currentRouter: Router!
+    lazy var currentRouter: Router = firstTabRouter
     var routerStack: [Router] = []
     
     init() {
@@ -96,7 +96,7 @@ class ConcreteAppNavigationController: AppNavigationController {
     func presentFullScreenCover(with route: RouteView) {
         currentView().presentFullScreenCover(with: route)
         routerStack.append(currentRouter)
-        currentRouter = currentView().viewModel.fullScreenRouter
+        currentRouter = currentView().fullScreenRouter
     }
     
     func dismissFullScreenCover() {
@@ -111,7 +111,7 @@ class ConcreteAppNavigationController: AppNavigationController {
         }
         currentView().presentSheet(with: route)
         routerStack.append(currentRouter)
-        currentRouter = currentView().viewModel.sheetRouter
+        currentRouter = currentView().sheetRouter
     }
     
     func dismissSheet() {
@@ -140,9 +140,13 @@ class ConcreteAppNavigationController: AppNavigationController {
     func dismissAllSheetsAndCovers() {
         while !routerStack.isEmpty {
             currentRouter = routerStack.popLast()!
-            currentView().setOnDismissSheet(nil)
-            currentView().dismissSheet()
-            currentView().dismissFullScreenCover()
+            if currentView().viewModel.presentedFullScreen != nil {
+                currentView().dismissFullScreenCover()
+            }
+            if currentView().viewModel.presentedSheet != nil {
+                currentView().setOnDismissSheet(nil)
+                currentView().dismissSheet()
+            }
         }
         currentRouter = getCurrentTabRouter()
     }
@@ -155,5 +159,4 @@ class ConcreteAppNavigationController: AppNavigationController {
             return secondTabRouter
         }
     }
-    
 }

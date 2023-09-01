@@ -17,7 +17,7 @@ class ThirdLevelViewModel: ObservableObject {
 struct ThirdLevelView: View {
     @StateObject var viewModel = ThirdLevelViewModel()
     @Injected(\.appNavigationController) var appNavigationController
-    @State var isAlertPresented = true
+    @State var isAlertPresented = false
     
     var alertButtons = [AlertButton(title: "CancelBut", role: .cancel, action: {
         print("cancel")
@@ -62,17 +62,12 @@ struct ThirdLevelView: View {
             } label: {
                 Text("reset all")
             }
-        }
-        .alert("AlertTitle", isPresented: $isAlertPresented) {
-            ForEach(alertButtons) { button in
-                Button(button.title, role: button.role, action: {
-                    Task {
-                        await button.action()
-                    }
-                })
+            
+            Button {
+                appNavigationController.showAlert(title: "Tes", message: "Test", buttons: alertButtons)
+            } label: {
+                Text("Show alert")
             }
-        } message: {
-            Text("This is an alert")
         }
     }
 }

@@ -24,8 +24,8 @@ struct NavigationPoCApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @StateObject var appNavigationController = Container.shared.appNavigationController() as! ConcreteAppNavigationController
     
-    let firstTabHomeView = RouteView(route: .firstTabHomeView)
-    let secondTabHomeView = RouteView(route: .secondTabHomeView)
+    let firstTabHomeView = Route.firstTabHomeView.getView()
+    let secondTabHomeView = Route.secondTabHomeView.getView()
     
     var body: some Scene {
         WindowGroup {
@@ -34,8 +34,7 @@ struct NavigationPoCApp: App {
                     MNavigationStack(path: $appNavigationController.firstTabRouter.stack) {
                         firstTabHomeView
                             .onAppear {
-                                appNavigationController.currentRouter = appNavigationController.firstTabRouter
-                                appNavigationController.firstTabRouter.homeView = firstTabHomeView
+                                appNavigationController.firstTabRouter.rootView = firstTabHomeView
                             }
                             .mNavigationDestination(for: RouteView.self) { $0 }
                     }
@@ -54,7 +53,7 @@ struct NavigationPoCApp: App {
                     MNavigationStack(path: $appNavigationController.secondTabRouter.stack) {
                         secondTabHomeView
                             .onAppear {
-                                appNavigationController.secondTabRouter.homeView = secondTabHomeView
+                                appNavigationController.secondTabRouter.rootView = secondTabHomeView
                             }
                             .mNavigationDestination(for: RouteView.self) { $0 }
                     }
@@ -68,21 +67,6 @@ struct NavigationPoCApp: App {
                         }
                     }
                 }
-//                .mSnackbar(isShowing: $appNavigationController.isSnackbarPresented, message: appNavigationController.snackbarMessage, messageType: .success)
-//                .fullScreenCover(item: $appNavigationController.presentedFullScreen, content: { route in
-//                    MNavigationStack(path: $appNavigationController.fullScreenRouter.stack) {
-//                        route
-//                            .mNavigationDestination(for: Route.self) { $0 }
-//                    }
-//                    .mSnackbar(isShowing: $appNavigationController.isSnackbarPresented, message: appNavigationController.snackbarMessage, messageType: .success)
-//                })
-//                .sheet(item: $appNavigationController.presentedSheet, content: { route in
-//                    MNavigationStack(path: $appNavigationController.sheetRouter.stack) {
-//                        route
-//                            .mNavigationDestination(for: Route.self) { $0 }
-//                    }
-//                    .mSnackbar(isShowing: $appNavigationController.isSnackbarPresented, message: appNavigationController.snackbarMessage, messageType: .success)
-//                })
                 .toolbar {
                     ToolbarItem(placement: .bottomBar) {
                         Button {
