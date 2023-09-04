@@ -10,7 +10,7 @@ struct FirstTabDeeplinkResolver: DeeplinkResolver {
         case details
     }
     
-    func resolveNavStackForURL(_ components: URLComponents) throws -> [RouteView] {
+    func resolveNavStackForURL(_ components: URLComponents) throws -> [Route] {
         guard components.host == DeeplinkAppSection.firstTab.rawValue else {
             throw DeeplinkError.unrecognizedHost
         }
@@ -29,20 +29,20 @@ struct FirstTabDeeplinkResolver: DeeplinkResolver {
         }
     }
     
-    private func handleItem(_ components: URLComponents, path: inout [String.SubSequence]) throws -> [RouteView] {
+    private func handleItem(_ components: URLComponents, path: inout [String.SubSequence]) throws -> [Route] {
         let deeplinkPath = DeeplinkItemPath(rawValue: String(path.removeFirst()))
         
         switch deeplinkPath {
         case .details:
             let stringItemId = (components.path as NSString).lastPathComponent
             guard let itemId = Int(stringItemId) else { throw DeeplinkError.unrecognizedPath }
-            return [Route.itemDetails(id: itemId).getView()]
+            return [.itemDetails(id: itemId)]
         default:
             throw DeeplinkError.unrecognizedPath
         }
     }
     
-    private func handleInfo(_ components: URLComponents, path: inout [String.SubSequence]) throws -> [RouteView] {
-        return [Route.info.getView()]
+    private func handleInfo(_ components: URLComponents, path: inout [String.SubSequence]) throws -> [Route] {
+        return [.info]
     }
 }

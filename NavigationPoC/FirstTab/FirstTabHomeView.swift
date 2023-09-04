@@ -17,7 +17,7 @@ struct FirstTabHomeView: View {
                 .id(ConcreteAppNavigationController.ScrollAnchor.firstTabTop)
             LazyVStack(alignment: .leading) {
                 ForEach(0..<20) { item in
-                    MNavigationLink(value: Route.itemDetails(id: item).getView()) {
+                    MNavigationLink(value: RouteView(route: .itemDetails(id: item))) {
                         Text("Item: \(item)")
                             .id(UUID())
                             .padding(8)
@@ -28,14 +28,14 @@ struct FirstTabHomeView: View {
             Divider()
                 .padding(.bottom, 32)
             Button {
-                appNavigationController.push(to: Route.info.getView())
+                appNavigationController.push(to: .info)
             } label: {
                 Text("Info")
             }
             .padding(.bottom, 32)
             
             Button {
-                appNavigationController.presentFullScreenCover(with: Route.secondTabFullScreen(isFullScreen: true).getView())
+                appNavigationController.presentFullScreenCover(with: .secondTabFullScreen(isFullScreen: true))
             } label: {
                 Text("Fullscreen cover")
             }

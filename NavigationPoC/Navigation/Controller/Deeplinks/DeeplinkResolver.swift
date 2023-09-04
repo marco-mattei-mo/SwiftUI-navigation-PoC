@@ -1,5 +1,5 @@
 import Foundation
 
 protocol DeeplinkResolver {
-    func resolveNavStackForURL(_ components: URLComponents) throws -> [RouteView]
+    func resolveNavStackForURL(_ components: URLComponents) throws -> [Route]
 }

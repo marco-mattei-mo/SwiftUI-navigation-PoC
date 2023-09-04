@@ -40,7 +40,7 @@ struct ThirdLevelView: View {
             }
             
             Button {
-                appNavigationController.pop(to: Route.secondTabFirstLevel.getView())
+                appNavigationController.pop(to: .secondTabFirstLevel)
             } label: {
                 Text("Pop to first")
             }

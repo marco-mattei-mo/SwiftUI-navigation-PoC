@@ -11,30 +11,27 @@ struct RouteView: View, Hashable, Identifiable {
     
     let id = UUID()
     let route: Route
-    let content: AnyView
-    @ObservedObject var viewModel = RouteViewModel()
-    @ObservedObject var sheetRouter = Router()
-    @ObservedObject var fullScreenRouter = Router()
+    @ObservedObject var viewModel: RouteViewModel = RouteViewModel()
 
     var body: some View {
-        content
+        resolveConcreteView()
         .mSnackbar(isShowing: $viewModel.isSnackbarPresented, message: viewModel.snackbarMessage, messageType: .success)
         .fullScreenCover(item: $viewModel.presentedFullScreen, content: { route in
-            MNavigationStack(path: $fullScreenRouter.stack) {
+            MNavigationStack(path: $viewModel.fullScreenRouter.stack) {
                 route
                     .mNavigationDestination(for: RouteView.self) { $0 }
             }.onAppear {
-                fullScreenRouter.rootView = route
+                viewModel.fullScreenRouter.rootView = route
             }
         })
         .sheet(item: $viewModel.presentedSheet, onDismiss: {
             viewModel.onDismissSheet?()
         }, content: { route in
-            MNavigationStack(path: $sheetRouter.stack) {
+            MNavigationStack(path: $viewModel.sheetRouter.stack) {
                 route
                     .mNavigationDestination(for: RouteView.self) { $0 }
             }.onAppear {
-                sheetRouter.rootView = route
+                viewModel.sheetRouter.rootView = route
             }
         })
         .alert(viewModel.alertTitle, isPresented: $viewModel.isAlertPresented) {
@@ -47,6 +44,28 @@ struct RouteView: View, Hashable, Identifiable {
             }
         } message: {
             Text(viewModel.alertMessage)
+        }
+    }
+    
+    @ViewBuilder
+    private func resolveConcreteView() -> some View {
+        switch route {
+        case .firstTabHomeView:
+            FirstTabHomeView()
+        case .secondTabHomeView:
+            SecondTabHomeView()
+        case .itemDetails(let id):
+            ItemDetailsView(id: id)
+        case .info:
+            InfoView()
+        case .secondTabFirstLevel:
+            FirstLevelView()
+        case .secondTabSecondLevel:
+            SecondLevelView()
+        case .secondTabThirdLevel:
+            ThirdLevelView()
+        case .secondTabFullScreen(let isFullScreen):
+            FullScreenSecondTabHomeView(isFullScreen: isFullScreen)
         }
     }
     

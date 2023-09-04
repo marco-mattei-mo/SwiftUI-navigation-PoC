@@ -4,15 +4,15 @@ import SwiftUI
 protocol AppNavigationController: ObservableObject {
     func resetAll()
 
-    func push(to route: RouteView)
-    func append(with routes: [RouteView])
+    func push(to route: Route)
+    func append(with routes: [Route])
     func pop()
-    func pop(to route: RouteView)
+    func pop(to route: Route)
     func popToRoot()
             
-    func presentFullScreenCover(with route: RouteView)
+    func presentFullScreenCover(with route: Route)
     func dismissFullScreenCover()
-    func presentSheet(with route: RouteView)
+    func presentSheet(with route: Route)
     func dismissSheet()
     func dismissAllSheetsAndCovers()
     

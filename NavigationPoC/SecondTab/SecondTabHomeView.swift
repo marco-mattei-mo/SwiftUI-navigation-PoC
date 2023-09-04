@@ -14,19 +14,21 @@ struct SecondTabHomeView: View {
     var body: some View {
         VStack {
             Button {
-                appNavigationController.push(to: Route.secondTabFirstLevel.getView())
+                appNavigationController.push(to: .secondTabFirstLevel)
             } label: {
                 Text("Go to first level")
             }
             
             Button {
-                appNavigationController.push(to: Route.secondTabThirdLevel.getView())
+                appNavigationController.push(to: .secondTabThirdLevel)
             } label: {
                 Text("Go to third level")
             }
             
             Button {
-                appNavigationController.append(with: [Route.secondTabFirstLevel.getView(), Route.secondTabSecondLevel.getView(), Route.secondTabThirdLevel.getView()])
+                appNavigationController.append(with: [.secondTabFirstLevel,
+                                                      .secondTabSecondLevel,
+                                                      .secondTabThirdLevel])
             } label: {
                 Text("Go to third level, with navstack")
             }
@@ -40,7 +42,7 @@ struct SecondTabHomeView: View {
             }
             
             Button {
-                appNavigationController.presentSheet(with: Route.secondTabFullScreen(isFullScreen: false).getView())
+                appNavigationController.presentSheet(with: .secondTabFullScreen(isFullScreen: false))
             } label: {
                 Text("Sheet")
             }

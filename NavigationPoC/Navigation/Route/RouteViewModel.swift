@@ -1,10 +1,6 @@
 import Combine
 
 class RouteViewModel: ObservableObject {
-    @Published var presentedFullScreen: RouteView? = nil
-    @Published var presentedSheet: RouteView? = nil
-    var onDismissSheet: (() -> Void)?
-    
     @Published var isSnackbarPresented: Bool = false
     @Published var snackbarMessage: String = ""
     
@@ -12,6 +8,23 @@ class RouteViewModel: ObservableObject {
     @Published var alertTitle: String = ""
     @Published var alertMessage: String = ""
     @Published var alertButtons: [AlertButton] = []
+    
+    @Published var presentedFullScreen: RouteView? = nil
+    @Published var presentedSheet: RouteView? = nil
+    @Published var sheetRouter = Router()
+    @Published var fullScreenRouter = Router()
+    var onDismissSheet: (() -> Void)?
+    
+    private var routersCancellables = Set<AnyCancellable>()
+    
+    init() {
+        sheetRouter.objectWillChange.sink { [weak self] (_) in
+            self?.objectWillChange.send()
+        }.store(in: &routersCancellables)
+        fullScreenRouter.objectWillChange.sink { [weak self] (_) in
+            self?.objectWillChange.send()
+        }.store(in: &routersCancellables)
+    }
     
     func presentFullScreenCover(with route: RouteView) {
         presentedFullScreen = route

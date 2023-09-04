@@ -24,8 +24,8 @@ struct NavigationPoCApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @StateObject var appNavigationController = Container.shared.appNavigationController() as! ConcreteAppNavigationController
     
-    let firstTabHomeView = Route.firstTabHomeView.getView()
-    let secondTabHomeView = Route.secondTabHomeView.getView()
+    let firstTabHomeView = RouteView(route: .firstTabHomeView)
+    let secondTabHomeView = RouteView(route: .secondTabHomeView)
     
     var body: some Scene {
         WindowGroup {

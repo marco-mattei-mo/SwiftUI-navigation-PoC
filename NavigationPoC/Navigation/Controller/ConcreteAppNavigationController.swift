@@ -54,20 +54,24 @@ class ConcreteAppNavigationController: AppNavigationController {
         selectedTab = tab
     }
     
-    func push(to route: RouteView) {
-        currentRouter.push(to: route)
+    func push(to route: Route) {
+        currentRouter.push(to: RouteView(route: route))
     }
     
-    func append(with routes: [RouteView]) {
-        currentRouter.append(with: routes)
+    func append(with routes: [Route]) {
+        currentRouter.append(with: routes.map { RouteView(route: $0) })
+    }
+    
+    func replace(with routes: [Route]) {
+        currentRouter.replace(with: routes.map { RouteView(route: $0) })
     }
     
     func pop() {
         currentRouter.pop()
     }
     
-    func pop(to route: RouteView) {
-        currentRouter.pop(to: route)
+    func pop(to route: Route) {
+        currentRouter.pop(to: RouteView(route: route))
     }
     
     func popToRoot() {
@@ -93,10 +97,10 @@ class ConcreteAppNavigationController: AppNavigationController {
         }
     }
     
-    func presentFullScreenCover(with route: RouteView) {
-        currentView().presentFullScreenCover(with: route)
+    func presentFullScreenCover(with route: Route) {
+        currentView().presentFullScreenCover(with: RouteView(route: route))
         routerStack.append(currentRouter)
-        currentRouter = currentView().fullScreenRouter
+        currentRouter = currentView().viewModel.fullScreenRouter
     }
     
     func dismissFullScreenCover() {
@@ -105,13 +109,13 @@ class ConcreteAppNavigationController: AppNavigationController {
         currentView().dismissFullScreenCover()
     }
     
-    func presentSheet(with route: RouteView) {
+    func presentSheet(with route: Route) {
         currentView().setOnDismissSheet { [weak self] in
             self?.dismissSheet()
         }
-        currentView().presentSheet(with: route)
+        currentView().presentSheet(with: RouteView(route: route))
         routerStack.append(currentRouter)
-        currentRouter = currentView().sheetRouter
+        currentRouter = currentView().viewModel.sheetRouter
     }
     
     func dismissSheet() {

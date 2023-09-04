@@ -19,13 +19,13 @@ extension ConcreteAppNavigationController {
             case .firstTab:
                 selectTab(.firstTab)
                 let navStack = try FirstTabDeeplinkResolver().resolveNavStackForURL(components)
-                firstTabRouter.replace(with: navStack)
+                replace(with: navStack)
             case .secondTab:
                 selectTab(.secondTab)
                 let navStack = try SecondTabDeeplinkResolver().resolveNavStackForURL(components)
-                secondTabRouter.replace(with: navStack)
+                replace(with: navStack)
             case .fullScreenCover:
-                presentFullScreenCover(with: Route.secondTabFullScreen(isFullScreen: true).getView())
+                presentFullScreenCover(with: .secondTabFullScreen(isFullScreen: true))
                 let navStack = try SecondTabDeeplinkResolver().resolveNavStackForURL(components)
                 append(with: navStack)
             }
