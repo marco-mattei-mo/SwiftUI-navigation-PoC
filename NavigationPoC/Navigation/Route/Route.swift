@@ -1,5 +1,3 @@
-import SwiftUI
-
 enum Route: Equatable {
     case firstTabHomeView
     case secondTabHomeView

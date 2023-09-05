@@ -13,7 +13,9 @@ class RouteViewModel: ObservableObject {
     @Published var presentedSheet: RouteView? = nil
     @Published var sheetRouter = Router()
     @Published var fullScreenRouter = Router()
+    
     var onDismissSheet: (() -> Void)?
+    var onDismissFullScreenCover: (() -> Void)?
     
     private var routersCancellables = Set<AnyCancellable>()
     
@@ -24,15 +26,6 @@ class RouteViewModel: ObservableObject {
         fullScreenRouter.objectWillChange.sink { [weak self] (_) in
             self?.objectWillChange.send()
         }.store(in: &routersCancellables)
-    }
-    
-    func presentFullScreenCover(with route: RouteView) {
-        presentedFullScreen = route
-    }
-
-    
-    func presentSheet(with route: RouteView) {
-        presentedSheet = route
     }
     
     func showSnackbar(message: String) {
@@ -49,5 +42,29 @@ class RouteViewModel: ObservableObject {
         alertMessage = message
         alertButtons = buttons
         isAlertPresented = true
+    }
+
+    func presentFullScreenCover(with route: RouteView) {
+        presentedFullScreen = route
+    }
+
+    func presentSheet(with route: RouteView) {
+        presentedSheet = route
+    }
+    
+    func dismissFullScreenCover() {
+        presentedFullScreen = nil
+    }
+    
+    func dismissSheet() {
+        presentedSheet = nil
+    }
+    
+    func setOnDismissSheet(_ onDismissSheet: (() -> Void)?) {
+        self.onDismissSheet = onDismissSheet
+    }
+    
+    func setOnDismissFullScreenCover(_ onDismissFullScreenCover: (() -> Void)?) {
+        self.onDismissFullScreenCover = onDismissFullScreenCover
     }
 }

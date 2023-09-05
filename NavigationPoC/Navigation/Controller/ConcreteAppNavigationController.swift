@@ -40,7 +40,7 @@ class ConcreteAppNavigationController: AppNavigationController {
     
     lazy var currentRouter: Router = firstTabRouter
     var routerStack: [Router] = []
-    
+        
     init() {
         firstTabRouter.objectWillChange.sink { [weak self] (_) in
             self?.objectWillChange.send()
@@ -98,7 +98,10 @@ class ConcreteAppNavigationController: AppNavigationController {
     }
     
     func presentFullScreenCover(with route: Route) {
-        currentView().presentFullScreenCover(with: RouteView(route: route))
+        currentView().viewModel.setOnDismissFullScreenCover { [weak self] in
+            self?.dismissFullScreenCover()
+        }
+        currentView().viewModel.presentFullScreenCover(with: RouteView(route: route))
         routerStack.append(currentRouter)
         currentRouter = currentView().viewModel.fullScreenRouter
     }
@@ -106,14 +109,15 @@ class ConcreteAppNavigationController: AppNavigationController {
     func dismissFullScreenCover() {
         guard !routerStack.isEmpty else { return }
         currentRouter = routerStack.popLast()!
-        currentView().dismissFullScreenCover()
+        currentView().viewModel.setOnDismissFullScreenCover(nil)
+        currentView().viewModel.dismissFullScreenCover()
     }
     
     func presentSheet(with route: Route) {
-        currentView().setOnDismissSheet { [weak self] in
+        currentView().viewModel.setOnDismissSheet { [weak self] in
             self?.dismissSheet()
         }
-        currentView().presentSheet(with: RouteView(route: route))
+        currentView().viewModel.presentSheet(with: RouteView(route: route))
         routerStack.append(currentRouter)
         currentRouter = currentView().viewModel.sheetRouter
     }
@@ -121,20 +125,20 @@ class ConcreteAppNavigationController: AppNavigationController {
     func dismissSheet() {
         guard !routerStack.isEmpty else { return }
         currentRouter = routerStack.popLast()!
-        currentView().setOnDismissSheet(nil)
-        currentView().dismissSheet()
+        currentView().viewModel.setOnDismissSheet(nil)
+        currentView().viewModel.dismissSheet()
     }
     
     func showSnackbar(message: String) {
-        currentView().showSnackbar(message: message)
+        currentView().viewModel.showSnackbar(message: message)
     }
     
     func hideSnackbar() {
-        currentView().hideSnackbar()
+        currentView().viewModel.hideSnackbar()
     }
     
     func showAlert(title: String, message: String, buttons: [AlertButton]) {
-        currentView().showAlert(title: title, message: message, buttons: buttons)
+        currentView().viewModel.showAlert(title: title, message: message, buttons: buttons)
     }
     
     func currentView() -> RouteView {
@@ -145,11 +149,11 @@ class ConcreteAppNavigationController: AppNavigationController {
         while !routerStack.isEmpty {
             currentRouter = routerStack.popLast()!
             if currentView().viewModel.presentedFullScreen != nil {
-                currentView().dismissFullScreenCover()
+                currentView().viewModel.dismissFullScreenCover()
             }
             if currentView().viewModel.presentedSheet != nil {
-                currentView().setOnDismissSheet(nil)
-                currentView().dismissSheet()
+                currentView().viewModel.setOnDismissSheet(nil)
+                currentView().viewModel.dismissSheet()
             }
         }
         currentRouter = getCurrentTabRouter()

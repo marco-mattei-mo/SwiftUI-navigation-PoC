@@ -16,22 +16,24 @@ struct RouteView: View, Hashable, Identifiable {
     var body: some View {
         resolveConcreteView()
         .mSnackbar(isShowing: $viewModel.isSnackbarPresented, message: viewModel.snackbarMessage, messageType: .success)
-        .fullScreenCover(item: $viewModel.presentedFullScreen, content: { route in
+        .fullScreenCover(item: $viewModel.presentedFullScreen, onDismiss: {
+            viewModel.onDismissFullScreenCover?()
+        }, content: { presentedFullScreenView in
             MNavigationStack(path: $viewModel.fullScreenRouter.stack) {
-                route
+                presentedFullScreenView
                     .mNavigationDestination(for: RouteView.self) { $0 }
             }.onAppear {
-                viewModel.fullScreenRouter.rootView = route
+                viewModel.fullScreenRouter.rootView = presentedFullScreenView
             }
         })
         .sheet(item: $viewModel.presentedSheet, onDismiss: {
             viewModel.onDismissSheet?()
-        }, content: { route in
+        }, content: { presentedSheetView in
             MNavigationStack(path: $viewModel.sheetRouter.stack) {
-                route
+                presentedSheetView
                     .mNavigationDestination(for: RouteView.self) { $0 }
             }.onAppear {
-                viewModel.sheetRouter.rootView = route
+                viewModel.sheetRouter.rootView = presentedSheetView
             }
         })
         .alert(viewModel.alertTitle, isPresented: $viewModel.isAlertPresented) {
@@ -67,37 +69,5 @@ struct RouteView: View, Hashable, Identifiable {
         case .secondTabFullScreen(let isFullScreen):
             FullScreenSecondTabHomeView(isFullScreen: isFullScreen)
         }
-    }
-    
-    func presentFullScreenCover(with route: RouteView) {
-        viewModel.presentFullScreenCover(with: route)
-    }
-    
-    func dismissFullScreenCover() {
-        viewModel.presentedFullScreen = nil
-    }
-    
-    func presentSheet(with route: RouteView) {
-        viewModel.presentSheet(with: route)
-    }
-    
-    func dismissSheet() {
-        viewModel.presentedSheet = nil
-    }
-    
-    func showSnackbar(message: String) {
-        viewModel.showSnackbar(message: message)
-    }
-    
-    func hideSnackbar() {
-        viewModel.hideSnackbar()
-    }
-    
-    func showAlert(title: String, message: String, buttons: [AlertButton]) {
-        viewModel.showAlert(title: title, message: message, buttons: buttons)
-    }
-    
-    func setOnDismissSheet(_ onDismissSheet: (() -> Void)?) {
-        viewModel.onDismissSheet = onDismissSheet
     }
 }

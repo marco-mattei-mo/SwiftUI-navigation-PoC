@@ -10,6 +10,7 @@ import Factory
 
 struct FullScreenSecondTabHomeView: View {
     @Injected(\.appNavigationController) var appNavigationController
+    @Environment(\.dismiss) var dismiss
     
     let isFullScreen: Bool
 
@@ -18,11 +19,14 @@ struct FullScreenSecondTabHomeView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
-                        if isFullScreen {
-                            appNavigationController.dismissFullScreenCover()
-                        } else {
-                            appNavigationController.dismissSheet()
-                        }
+                        // Either use "dismiss" env key or use appNavController
+                        
+                        dismiss()
+//                        if isFullScreen {
+//                            appNavigationController.dismissFullScreenCover()
+//                        } else {
+//                            appNavigationController.dismissSheet()
+//                        }
                     } label: {
                         Text("Close")
                     }
